@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  
+  :root {
+    --background: 36 33% 95%;
+    --foreground: 27 50% 5%;
+    --card: 40 50% 99%;
+    --card-foreground: 27 50% 5%;
+    --popover: 40 50% 99%;
+    --popover-foreground: 27 50% 5%;
+    --primary: 38 85% 38%;
+    --primary-foreground: 36 50% 89%;
+    --secondary: 34 30% 91%;
+    --secondary-foreground: 27 50% 5%;
+    --muted: 34 20% 90%;
+    --muted-foreground: 27 10% 48%;
+    --accent: 180 38% 27%;
+    --accent-foreground: 180 30% 95%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 38 85% 38%;
+    --radius: 0.75rem;
+    --sidebar-background: 36 20% 96%;
+    --sidebar-foreground: 27 20% 20%;
+    --sidebar-primary: 27 50% 5%;
+    --sidebar-primary-foreground: 36 50% 89%;
+    --sidebar-accent: 34 20% 94%;
+    --sidebar-accent-foreground: 27 50% 5%;
+    --sidebar-border: 30 15% 88%;
+    --sidebar-ring: 38 85% 38%;
+  }
+
+  .dark, [data-theme="dark"] {
+    --background: 27 50% 3%;
+    --foreground: 36 50% 89%;
+    --card: 27 40% 6%;
+    --card-foreground: 36 50% 89%;
+    --popover: 27 40% 6%;
+    --popover-foreground: 36 50% 89%;
+    --primary: 38 85% 38%;
+    --primary-foreground: 27 50% 5%;
+    --secondary: 27 30% 8%;
+    --secondary-foreground: 36 50% 89%;
+    --muted: 27 25% 10%;
+    --muted-foreground: 30 20% 60%;
+    --accent: 180 38% 27%;
+    --accent-foreground: 180 30% 95%;
+    --destructive: 0 62% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 27 25% 12%;
+    --input: 27 25% 12%;
+    --ring: 38 85% 38%;
+    --sidebar-background: 27 50% 4%;
+    --sidebar-foreground: 36 40% 90%;
+    --sidebar-primary: 38 85% 38%;
+    --sidebar-primary-foreground: 27 50% 5%;
+    --sidebar-accent: 27 20% 10%;
+    --sidebar-accent-foreground: 36 40% 90%;
+    --sidebar-border: 27 20% 12%;
+    --sidebar-ring: 38 85% 38%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(184,134,11,0.03) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(42,95,95,0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+  [data-theme="dark"] body { background-image: none; }
+  ::selection { background: rgba(184,134,11,0.2); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+  ::-webkit-scrollbar-thumb { background: hsl(30 15% 78%); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+  :focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 2px; }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-1.5 font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap; }
+  .btn-primary { @apply bg-ink text-parchment hover:bg-espresso hover:-translate-y-px shadow-museum-sm hover:shadow-museum-md; }
+  .btn-gold { @apply bg-gold text-ink hover:bg-gold-dark hover:-translate-y-px shadow-gold-sm; }
+  .btn-outline { @apply bg-transparent border border-gold text-gold hover:bg-gold/5; }
+  .btn-ghost { @apply bg-transparent border border-museum-linen text-museum-stone hover:bg-museum-surface2 hover:text-ink; }
+  .btn-xs { @apply h-7 px-3 text-xs rounded-md; }
+  .btn-sm { @apply h-[34px] px-4 text-xs; }
+  .btn-md { @apply h-10 px-5 text-sm; }
+  .btn-lg { @apply h-12 px-8 text-base; }
+  .btn-icon { @apply w-9 h-9 p-0 rounded-lg border border-museum-linen text-museum-stone hover:border-gold hover:text-gold flex items-center justify-center; }
+
+  .museum-input { @apply w-full h-10 px-4 bg-museum-surface border border-museum-linen rounded-lg text-sm text-ink outline-none transition-all placeholder:text-museum-stone/50 hover:border-museum-stone focus:border-gold focus:ring-2 focus:ring-gold/10; }
+
+  .badge-museum { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide bg-ink text-parchment; }
+  .badge-era { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide bg-gold/10 text-gold-dark border border-gold/25; }
+  .badge-ai { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide bg-accent/10 text-accent border border-accent/25; }
+
+  .tag { @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border border-museum-linen text-museum-stone cursor-pointer transition-all hover:border-gold hover:text-gold hover:bg-gold/5; }
+  .tag-active { @apply border-gold text-gold-dark bg-gold/10; }
+
+  .skeleton { @apply bg-gradient-to-r from-museum-linen via-museum-surface to-museum-linen bg-[length:200%_100%] animate-shimmer rounded; }
+  .museum-card { @apply bg-museum-surface border border-museum-linen/60 rounded-xl shadow-museum-sm; }
+  .section-kicker { @apply text-xs font-medium tracking-widest uppercase text-gold mb-2; }
+  .section-title { @apply font-display text-3xl font-semibold leading-tight tracking-tight; }
+  .divider-gold { @apply h-px bg-gradient-to-r from-transparent via-gold-mid to-transparent opacity-40 my-8; }
+}
