@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Grid3X3, List, LayoutGrid, X } from 'lucide-react';
 import SearchBar from '@/components/search/SearchBar';
 import ArtworkGrid from '@/components/artwork/ArtworkGrid';
-import { SAMPLE_ARTWORKS, MUSEUMS } from '@/utils/constants';
+import { getAllArtworks, MUSEUMS } from '@/utils/constants';
 
 type ViewMode = 'grid' | 'masonry' | 'list';
 
@@ -16,8 +16,14 @@ export default function ExplorePage() {
   const movementFilter = searchParams.get('movement') || '';
 
   const filteredArtworks = useMemo(() => {
-    return SAMPLE_ARTWORKS.filter(a => {
-      if (query && !a.title.toLowerCase().includes(query.toLowerCase()) && !a.artist.toLowerCase().includes(query.toLowerCase())) return false;
+    const all = getAllArtworks();
+    return all.filter(a => {
+      if (query) {
+        const q = query.toLowerCase().trim();
+        const title = a.title.toLowerCase();
+        const artist = a.artist.toLowerCase();
+        if (!title.includes(q) && !artist.includes(q)) return false;
+      }
       if (museumFilter && a.museum.toLowerCase() !== museumFilter.toLowerCase()) return false;
       if (movementFilter && a.movement.toLowerCase() !== movementFilter.toLowerCase()) return false;
       return true;

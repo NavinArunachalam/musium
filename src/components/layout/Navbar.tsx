@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Search, Menu, X, Sun, Moon, User, LogOut } from 'lucide-react';
 import SearchBar from '@/components/search/SearchBar';
 import { useAuth } from '@/contexts/AuthContext';
@@ -18,6 +18,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dark, setDark] = useState(() => document.documentElement.getAttribute('data-theme') === 'dark');
   const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const currentQuery = searchParams.get('q') || '';
 
   useEffect(() => {
     const handle = () => setScrolled(window.scrollY > 10);
@@ -75,7 +77,7 @@ export default function Navbar() {
         <div className="flex-1" />
 
         <div className="hidden md:block mr-3 w-[240px]">
-          <SearchBar compact />
+          <SearchBar compact defaultValue={currentQuery} />
         </div>
 
         <button onClick={toggleTheme} className="btn-icon mr-2">
@@ -125,7 +127,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="pt-4">
-              <SearchBar />
+              <SearchBar defaultValue={currentQuery} />
             </div>
           </div>
         </div>
