@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { AUTH_IMAGES } from '@/utils/constants';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff } from 'lucide-react';
-import SmartImage from '@/components/ui/SmartImage';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 
@@ -56,17 +54,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden py-12">
-      <div className="absolute inset-0">
-        <SmartImage
-          src={AUTH_IMAGES.register}
-          alt="Museum interior"
-          aspectRatio="auto"
-          className="w-full h-full"
-          priority
-          showSkeleton={false}
-        />
-        <div className="absolute inset-0 bg-ink/80" />
-      </div>
+      <div className="absolute inset-0 bg-museum-surface/50" />
 
       <motion.div
         className="relative z-10 w-full max-w-[420px] mx-4 bg-museum-surface rounded-2xl shadow-museum-xl border border-museum-linen p-8"
