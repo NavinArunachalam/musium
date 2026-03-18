@@ -107,14 +107,14 @@ export const SAMPLE_ARTWORKS: SampleArtwork[] = [
   {
     externalId: 'sk-c-5', source: 'sample', title: 'The Night Watch', artist: 'Rembrandt van Rijn',
     date: '1642', museum: 'Rijksmuseum', movement: 'Dutch Golden Age',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/The_Night_Watch_-_HD.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg/960px-La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg',
     tags: ['baroque', 'group-portrait', 'militia'],
     description: 'One of the most famous Dutch Golden Age paintings, depicting a militia company marching out.',
   },
   {
     externalId: 'starry-night-1', source: 'sample', title: 'The Starry Night', artist: 'Vincent van Gogh',
     date: '1889', museum: 'MoMA', movement: 'Post-Impressionism',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
     tags: ['landscape', 'night-sky', 'expressionism'],
     description: 'A swirling night sky over a village, painted during van Gogh\'s stay at the asylum in Saint-Rémy-de-Provence.',
   },
@@ -289,7 +289,7 @@ export const GALLERY_ARTWORKS: SampleArtwork[] = [
   {
     externalId: 'fighting-temeraire-1', source: 'sample', title: 'The Fighting Temeraire', artist: 'J.M.W. Turner',
     date: '1839', museum: 'National Gallery', movement: 'Romanticism',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg/960px-The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg',
     tags: ['romanticism', 'british', 'seascape'],
     description: 'A grand warship is towed to the breakers by a small tugboat at sunset.',
   },
@@ -303,7 +303,7 @@ export const GALLERY_ARTWORKS: SampleArtwork[] = [
   {
     externalId: 'adele-1', source: 'sample', title: 'Portrait of Adele Bloch-Bauer I', artist: 'Gustav Klimt',
     date: '1907', museum: 'Neue Galerie', movement: 'Art Nouveau',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Klimt_-_Adele_Bloch-Bauer_I.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gustav_Klimt_047.jpg/500px-Gustav_Klimt_047.jpg',
     displayMode: 'contain-blur',
     tags: ['art-nouveau', 'portrait', 'gold'],
     description: 'The "Woman in Gold" — a shimmering portrait covered in gold leaf and ornamental patterns.',
@@ -318,21 +318,21 @@ export const GALLERY_ARTWORKS: SampleArtwork[] = [
   {
     externalId: 'judith-klimt-1', source: 'sample', title: 'Judith I', artist: 'Gustav Klimt',
     date: '1901', museum: 'Österreichische Galerie Belvedere', movement: 'Symbolism',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Judith_I_%28Klimt%29.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Judith_1_%28cropped%29.jpg/500px-Judith_1_%28cropped%29.jpg',
     tags: ['symbolism', 'biblical', 'austrian'],
     description: 'A sensual depiction of the biblical Judith, rendered in gold with a distant, triumphant expression.',
   },
   {
     externalId: 'hope-ii-1', source: 'sample', title: 'Hope II', artist: 'Gustav Klimt',
     date: '1908', museum: 'MoMA', movement: 'Symbolism',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Gustav_Klimt_-_Hoffnung_II.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg/500px-Gustav_Klimt_-_Hope%2C_II_-_Google_Art_Project.jpg',
     tags: ['symbolism', 'pregnancy', 'austrian'],
     description: 'A pregnant woman bows her head in contemplation, adorned with Klimt\'s decorative patterns.',
   },
   {
     externalId: 'blessed-damozel-1', source: 'sample', title: 'The Blessed Damozel', artist: 'Dante Gabriel Rossetti',
     date: '1878', museum: 'Fogg Museum', movement: 'Pre-Raphaelite',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Rossetti-blessed-damozel.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Dante_Gabriel_Rossetti_The_Blessed_Damozel.jpg/500px-Dante_Gabriel_Rossetti_The_Blessed_Damozel.jpg',
     tags: ['pre-raphaelite', 'poetry', 'british'],
     description: 'A young woman leans over from heaven, longing for her earthly lover below.',
   },
@@ -399,3 +399,33 @@ export const AUTH_IMAGES = {
   login: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Edouard_Manet_-_Olympia_-_Google_Art_Project_3.jpg',
   register: 'https://upload.wikimedia.org/wikipedia/commons/9/90/Edouard_Manet_-_Luncheon_on_the_Grass_-_Google_Art_Project.jpg',
 };
+
+// ═══════════════════════════════════════════════════════════
+// DATA HELPERS
+// ═══════════════════════════════════════════════════════════
+export function getArtworkById(id: string): SampleArtwork | undefined {
+  const allArrs = [
+    SAMPLE_ARTWORKS,
+    TRENDING_ARTWORKS,
+    GALLERY_ARTWORKS,
+    [FEATURED_ARTWORK],
+    ...Object.values(MUSEUM_HIGHLIGHT_ARTWORKS)
+  ];
+  
+  for (const arr of allArrs) {
+    const found = arr.find(a => a.externalId === id);
+    if (found) return found;
+  }
+  
+  return undefined;
+}
+
+export function getAllArtworks(): SampleArtwork[] {
+  return [
+    ...SAMPLE_ARTWORKS,
+    ...TRENDING_ARTWORKS,
+    ...GALLERY_ARTWORKS,
+    FEATURED_ARTWORK,
+    ...Object.values(MUSEUM_HIGHLIGHT_ARTWORKS).flat()
+  ];
+}

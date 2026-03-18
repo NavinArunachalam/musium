@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { Heart, Share2, ExternalLink, ArrowLeft } from 'lucide-react';
 import SmartImage from '@/components/ui/SmartImage';
 import ArtworkCard from '@/components/artwork/ArtworkCard';
-import { SAMPLE_ARTWORKS } from '@/utils/constants';
+import { getArtworkById, getAllArtworks } from '@/utils/constants';
 
 export default function ArtworkDetailPage() {
   const { source, id } = useParams();
-  const artwork = SAMPLE_ARTWORKS.find(a => a.externalId === id) || SAMPLE_ARTWORKS[0];
-  const similar = SAMPLE_ARTWORKS.filter(a => a.externalId !== artwork.externalId).slice(0, 4);
+  const artwork = getArtworkById(id || '') || getAllArtworks()[0];
+  const similar = getAllArtworks().filter(a => a.externalId !== artwork.externalId).slice(0, 4);
 
   return (
     <div className="pt-20 pb-20">

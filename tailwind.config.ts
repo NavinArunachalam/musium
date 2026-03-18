@@ -14,6 +14,7 @@ export default {
     },
     extend: {
       colors: {
+        midnight: "#0C0705",
         ink: "#1C1008",
         espresso: "#2D1A0A",
         walnut: "#4A2E12",

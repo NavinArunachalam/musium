@@ -71,8 +71,8 @@ function QuizRound({ museumId }: { museumId: string }) {
 
   if (isFinished) {
     return (
-      <div className="container mx-auto px-4 py-32 text-center min-h-[70vh] flex flex-col justify-center">
-        <div className="max-w-md mx-auto bg-midnight/50 p-10 rounded-2xl border border-gold/20 backdrop-blur-md w-full">
+      <div className="container mx-auto px-4 py-32 text-center min-h-[70vh] flex flex-col justify-center bg-stone-50/5">
+        <div className="max-w-md mx-auto bg-midnight/90 p-10 rounded-2xl border border-gold/20 backdrop-blur-md w-full shadow-2xl">
           <Trophy className="w-20 h-20 text-gold mx-auto mb-6" />
           <h2 className="text-4xl font-display text-parchment mb-4">Quiz Complete!</h2>
           <p className="text-xl text-parchment/80 mb-8">
@@ -93,7 +93,7 @@ function QuizRound({ museumId }: { museumId: string }) {
           <ArrowLeft className="w-5 h-5 mr-2" /> Back to Museum Selection
         </Link>
         
-        <div className="bg-midnight/50 p-6 md:p-10 rounded-2xl border border-gold/20 backdrop-blur-md shadow-2xl">
+        <div className="bg-midnight/90 p-6 md:p-10 rounded-2xl border border-gold/20 backdrop-blur-md shadow-2xl">
           <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/10">
             <span className="text-sm md:text-base font-semibold text-gold tracking-wider uppercase flex items-center gap-2">
               <Zap className="w-4 h-4" /> {museum?.name || 'Art History'} Quiz

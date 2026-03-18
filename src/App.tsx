@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ScrollToTop from '@/components/layout/ScrollToTop';
 import { AuthProvider } from '@/contexts/AuthContext';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -37,6 +38,7 @@ const App = () => (
       <TooltipProvider>
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Navbar />
           <Suspense fallback={<PageLoader />}>
             <Routes>
